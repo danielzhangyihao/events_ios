@@ -9,7 +9,8 @@
   "dependencies": {
     "lodash": "^4.17.4",
     "react": "16.0.0",
-    "react-native": "0.50.4"
+    "react-native": "0.50.4",
+    "react-native-wechat": "^1.9.9"
   },
   "devDependencies": {
     "babel-jest": "21.2.0",
