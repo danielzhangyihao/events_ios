@@ -36,7 +36,7 @@ export default class EventCell extends Component {
               {event.name}
               </Text>
               <Text style={styles.petBreed} numberOfLines={1}>
-                {event.eventDate}
+                {event.event_date}
               </Text>
               <Text style={styles.petDescription} numberOfLines={2}>
                 {event.details}

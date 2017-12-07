@@ -11,7 +11,10 @@ import {
   Platform,
   StyleSheet,
   Text,
-  View
+  View,
+  Alert,
+  Button,
+  ScrollView
 } from 'react-native';
 import _ from 'lodash';
 import EventCell from './EventCell';
@@ -40,6 +43,18 @@ export default class App extends Component {
     isLoading: false,
     isLoadingTail: false,
     lastOffset: 0,
+    city: '全部',
+    cities: [
+         {'name': '全部', 'id': 1},
+         {'name': '北京', 'id': 2},
+         {'name': '上海', 'id': 3},
+         {'name': '深圳', 'id': 4},
+         {'name': '广州', 'id': 5},
+         {'name': '成都', 'id': 6},
+         {'name': '香港', 'id': 7},
+         {'name': '杭州', 'id': 8},
+         {'name': '西安', 'id': 9}
+      ],
     dataSource: new ListView.DataSource({
       rowHasChanged: (row1, row2) => row1 !== row2,
     }),
@@ -50,8 +65,9 @@ export default class App extends Component {
   }
 
   fetchEvents = () => {
+    const city = this.state.city;
     const offset = this.state.lastOffset,
-      URL = `https://guarded-shelf-23948.herokuapp.com/allEvents?offset=${offset}`;
+      URL = `https://guarded-shelf-23948.herokuapp.com/allEvents?offset=${offset}&city=${city}`;
 
     if (_.isEmpty(resultsCache)) {
       this.setState({isLoading: true});
@@ -109,6 +125,14 @@ export default class App extends Component {
     this.fetchEvents();
   }
 
+  onPressButton = (city: string) => {
+    resultsCache = [];
+    this.setState({
+      lastOffset: 0,
+      city: city,
+    }, () => {this.fetchEvents()});
+  }
+
   renderRow = (
     event: Object,
     sectionID: number | string,
@@ -138,6 +162,18 @@ export default class App extends Component {
     const { isLoading } = this.state;
     return (
       <View style={styles.container}>
+        <View style = { styles.scrollViewHolder }>
+            <ScrollView horizontal={true} showsHorizontalScrollIndicator={false} automaticallyAdjustContentInsets={false}>
+               {
+                  this.state.cities.map((item, index) => (
+                    <Button style = { styles.item }
+                      onPress={this.onPressButton.bind(this, item.name)}
+                      title={item.name}
+                    />
+                  ))
+               }
+            </ScrollView>
+        </View>
         {isLoading
           ? <View style={styles.loading}><Text>Loading...</Text></View>
           : <ListView
@@ -170,5 +206,15 @@ const styles = StyleSheet.create({
   },
   scrollSpinner: {
     marginVertical: 20,
+  },
+  scrollViewHolder:{
+      borderTopWidth: 2,
+      borderBottomWidth: 2,
+      borderTopColor: 'rgba(0,0,0,0.5)',
+      borderBottomColor: 'rgba(0,0,0,0.5)',
+  },
+  item:{
+      color: 'black',
+      fontSize: 18
   },
 });
