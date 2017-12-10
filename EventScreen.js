@@ -5,7 +5,8 @@ import {
   ScrollView,
   StyleSheet,
   Text,
-  View
+  View,
+  Dimensions
 } from 'react-native';
 import getImage from './getImage';
 
@@ -40,11 +41,11 @@ export default class EventScreen extends Component {
 
 const styles = StyleSheet.create({
   contentContainer: {
-    flex: 1,
+    flexGrow: 1,
   },
   imageContainer: {
     backgroundColor: '#dddddd',
-    flex: 1,
+    height: Dimensions.get('window').width,
   },
   petImage: {
     position: 'absolute',
@@ -54,7 +55,6 @@ const styles = StyleSheet.create({
     right: 0,
   },
   noImage: {
-    flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
   },

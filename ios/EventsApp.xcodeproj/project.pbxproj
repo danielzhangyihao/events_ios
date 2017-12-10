@@ -1249,7 +1249,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = org.reactjs.native.example.EventsApp23;
+				PRODUCT_BUNDLE_IDENTIFIER = org.reactjs.native.example.MashUp23;
 				PRODUCT_NAME = EventsApp;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				VERSIONING_SYSTEM = "apple-generic";
@@ -1270,7 +1270,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = org.reactjs.native.example.EventsApp23;
+				PRODUCT_BUNDLE_IDENTIFIER = org.reactjs.native.example.MashUp23;
 				PRODUCT_NAME = EventsApp;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				VERSIONING_SYSTEM = "apple-generic";
