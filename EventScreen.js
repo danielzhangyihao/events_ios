@@ -23,20 +23,18 @@ export default class EventScreen extends Component {
           }
         </View>
         <View style={styles.mainSection}>
-          <Text style={styles.petDecsription}>{event.details}</Text>
-          <Text>{' '}</Text>
           <Text>时间: {event.event_date}</Text>
           <Text>地点: {event.location}</Text>
           <Text>艺人: {event.artist}</Text>
-          <Text>{' '}</Text>
-          <Text style={{color: 'blue'}} onPress={() => Linking.openURL(url)}>
+          <Text style={{color: 'blue'}} onPress={() => Linking.openURL(event.event_url)}>
             {event.event_url}
           </Text>
+          <Text>{' '}</Text>
+          <Text style={styles.petDecsription}>{event.details}</Text>
         </View>
       </ScrollView>
     );
   }
-
 }
 
 const styles = StyleSheet.create({

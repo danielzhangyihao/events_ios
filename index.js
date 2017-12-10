@@ -13,7 +13,7 @@ class EventsApp extends Component {
       <NavigatorIOS
         style={styles.container}
         initialRoute={{
-          title: '哪玩儿',
+          title: 'MashUp',
           component: App,
         }}
       />
